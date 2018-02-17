@@ -1,0 +1,11 @@
+#source [find interface/stlink.cfg]
+#stlink-v2-1.cfg  stlink-v2.cfg
+source [find interface/stlink-v2-1.cfg]
+
+transport select hla_swd
+
+source [find target/stm32f1x.cfg]
+
+reset_config srst_only
+
+init
