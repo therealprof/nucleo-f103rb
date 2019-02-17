@@ -4,7 +4,6 @@ authors = ["Daniel Egger <daniel@eggers-club.de>"]
 categories = [
     "embedded",
     "no-std",
-    "bsp",
 ]
 description = "Board support crate for the STM32 Nucleo-F103RB microcontroller board"
 documentation = "https://docs.rs/nucleo-f103rb"
@@ -12,6 +11,7 @@ keywords = [
     "arm",
     "cortex-m",
     "template",
+    "bsp",
 ]
 license = "0BSD"
 name = "nucleo-f103rb"
