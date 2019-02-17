@@ -13,8 +13,8 @@ needs to get going with progamming this device is:
 * A bit of open source software
 
 [STM Nucleo-F103RB]: https://os.mbed.com/platforms/ST-Nucleo-F103RB/
-[cortex-m]:(https://github.com/japaric/cortex-m)
-[cortex-m-rt]:(https://github.com/japaric/cortex-m-rt)
+[cortex-m]: https://github.com/rust-embedded/cortex-m
+[cortex-m-rt]: https://github.com/rust-embedded/cortex-m-rt
 
 License
 -------

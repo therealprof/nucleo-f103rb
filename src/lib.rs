@@ -1,20 +1,11 @@
 #![no_std]
-#![cfg_attr(feature = "rt", feature(global_asm))]
-#![cfg_attr(feature = "rt", feature(use_extern_macros))]
-#![cfg_attr(feature = "rt", feature(used))]
-#![feature(const_fn)]
 #![allow(non_camel_case_types)]
 
-pub extern crate stm32f103xx_hal as hal;
-pub extern crate stm32f103xx;
+pub use stm32f1xx_hal as hal;
 
-extern crate bare_metal;
-extern crate cortex_m;
-extern crate cortex_m_rt;
-extern crate vcell;
-
-pub use stm32f103xx::*;
-pub use stm32f103xx::interrupt::*;
-pub use cortex_m_rt::*;
+pub use crate::hal::prelude::*;
+pub use crate::hal::stm32::interrupt::*;
+pub use crate::hal::stm32::*;
+pub use crate::hal::*;
 pub use cortex_m::*;
-pub use hal::*;
+pub use cortex_m_rt::*;

@@ -1,19 +1,18 @@
-#![feature(used)]
-#![feature(const_fn)]
+#![no_main]
 #![no_std]
 
-#[macro_use(block)]
-extern crate nb;
+#[allow(unused)]
+use panic_halt;
 
-extern crate cortex_m;
-extern crate stm32f103xx_hal as hal;
+use nucleo_f103rb as board;
 
-use hal::prelude::*;
-use hal::serial::*;
-use hal::stm32f103xx;
+use board::hal::{prelude::*, serial::*, stm32};
+use cortex_m_rt::entry;
+use nb::block;
 
-fn main() {
-    if let Some(p) = stm32f103xx::Peripherals::take() {
+#[entry]
+fn main() -> ! {
+    if let Some(p) = stm32::Peripherals::take() {
         let mut flash = p.FLASH.constrain();
         let mut rcc = p.RCC.constrain();
         let clocks = rcc.cfgr.freeze(&mut flash.acr);
@@ -41,7 +40,7 @@ fn main() {
         /* Print a nice hello message */
         let s = b"\r\nPlease type characters to echo:\r\n";
 
-        let _ = s.into_iter().map(|c| block!(tx.write(*c))).last();
+        let _ = s.iter().map(|c| block!(tx.write(*c))).last();
 
         /* Endless loop */
         loop {
@@ -50,5 +49,9 @@ fn main() {
                 let _ = block!(tx.write(c));
             }
         }
+    }
+
+    loop {
+        continue;
     }
 }
