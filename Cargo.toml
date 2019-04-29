@@ -15,18 +15,18 @@ keywords = [
 ]
 license = "0BSD"
 name = "nucleo-f103rb"
-version = "0.2.0"
+version = "0.3.0"
 repository = "https://github.com/therealprof/nucleo-f103rb"
 
 [dependencies]
 bare-metal = "0.2.4"
-cortex-m = "0.5.8"
-nb = "0.1.1"
-cortex-m-rt = "0.6.7"
+cortex-m = "0.6.0"
+nb = "0.1.2"
+cortex-m-rt = "0.6.8"
 
 [dependencies.stm32f1xx-hal]
 features = ["stm32f103", "rt"]
-version = "0.2.0"
+version = "0.3.0"
 
 [dev-dependencies]
 panic-halt = "0.2.0"
