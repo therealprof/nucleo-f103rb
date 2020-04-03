@@ -6,13 +6,13 @@ use panic_halt;
 
 use nucleo_f103rb as board;
 
-use board::hal::{prelude::*, serial::*, stm32};
+use board::hal::{pac, prelude::*, serial::*};
 use cortex_m_rt::entry;
 use nb::block;
 
 #[entry]
 fn main() -> ! {
-    if let Some(p) = stm32::Peripherals::take() {
+    if let Some(p) = pac::Peripherals::take() {
         let mut flash = p.FLASH.constrain();
         let mut rcc = p.RCC.constrain();
         let clocks = rcc.cfgr.freeze(&mut flash.acr);
@@ -30,7 +30,7 @@ fn main() -> ! {
             p.USART2,
             (tx, rx),
             &mut afio.mapr,
-            115_200.bps(),
+            Config::default().baudrate(115200.bps()),
             clocks,
             &mut rcc.apb1,
         );
